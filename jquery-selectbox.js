@@ -3,7 +3,7 @@
  *
  * Copyright 2011-2012, Dimitar Ivanov (http://www.bulgaria-web-developers.com/projects/javascript/selectbox/)
  * Licensed under the MIT (http://www.opensource.org/licenses/mit-license.php) license.
- * 
+ *
  * Date: Tue Jul 17 19:58:36 2012 +0300
  */
 (function ($, undefined) {
@@ -36,11 +36,11 @@
 			onClose: null //Define a callback function when the selectbox is closed
 		};
 	}
-	
+
 	$.extend(Selectbox.prototype, {
 		/**
 		 * Is the first field in a jQuery collection open as a selectbox
-		 * 
+		 *
 		 * @param {Object} target
 		 * @return {Boolean}
 		 */
@@ -53,7 +53,7 @@
 		},
 		/**
 		 * Is the first field in a jQuery collection disabled as a selectbox
-		 * 
+		 *
 		 * @param {HTMLElement} target
 		 * @return {Boolean}
 		 */
@@ -66,7 +66,7 @@
 		},
 		/**
 		 * Attach the select box to a jQuery selection.
-		 * 
+		 *
 		 * @param {HTMLElement} target
 		 * @param {Object} settings
 		 */
@@ -79,13 +79,13 @@
 				inst = self._newInst($target),
 				sbHolder, sbSelector, sbToggle, sbOptions,
 				s = FALSE, optGroup = $target.find("optgroup"), opts = $target.find("option"), olen = opts.length;
-				
+
 			$target.attr("sb", inst.uid);
-				
+
 			$.extend(inst.settings, self._defaults, settings);
 			self._state[inst.uid] = FALSE;
 			$target.hide();
-			
+
 			function closeOthers() {
 				var key, sel,
 					uid = this.attr("id").split("_")[1];
@@ -100,13 +100,13 @@
 					}
 				}
 			}
-			
+
 			sbHolder = $("<div>", {
 				"id": "sbHolder_" + inst.uid,
 				"class": inst.settings.classHolder,
 				"tabindex": $target.attr("tabindex")
 			});
-			
+
 			sbSelector = $("<a>", {
 				"id": "sbSelector_" + inst.uid,
 				"href": "#",
@@ -122,7 +122,7 @@
 					}
 				}
 			});
-			
+
 			sbToggle = $("<a>", {
 				"id": "sbToggle_" + inst.uid,
 				"href": "#",
@@ -147,7 +147,7 @@
 					"display": "none"
 				}
 			});
-			
+
 			$target.children().each(function(i) {
 				var that = $(this), li, config = {};
 				if (that.is("option")) {
@@ -165,7 +165,7 @@
 					getOptions(that.find("option"), config);
 				}
 			});
-			
+
 			function getOptions () {
 				var sub = arguments[1] && arguments[1].sub ? true : false,
 					disabled = arguments[1] && arguments[1].disabled ? true : false;
@@ -219,13 +219,13 @@
 					li.appendTo(sbOptions);
 				});
 			}
-			
+
 			if (!s) {
 				sbSelector.text(opts.first().text());
 			}
 
 			$.data(target, PROP_NAME, inst);
-			
+
 			sbHolder.data("uid", inst.uid).bind("keydown.sb", function (e) {
 				var key = e.charCode ? e.charCode : e.keyCode ? e.keyCode : 0,
 					$this = $(this),
@@ -259,7 +259,7 @@
 							$next.addClass(inst.settings.classFocus).focus();
 							$("#sbSelector_" + uid).text($next.text());
 						}
-						break;				
+						break;
 					case 13: //Enter
 						if ($f.length > 0) {
 							self._changeSelectbox(trgt, $f.attr("rel"), $f.text());
@@ -293,24 +293,24 @@
 			}).delegate("a", "mouseover", function (e) {
 				$(this).addClass(inst.settings.classFocus);
 			}).delegate("a", "mouseout", function (e) {
-				$(this).removeClass(inst.settings.classFocus);	
+				$(this).removeClass(inst.settings.classFocus);
 			});
-			
+
 			sbSelector.appendTo(sbHolder);
-			sbOptions.appendTo(sbHolder);			
+			sbOptions.appendTo(sbHolder);
 			sbHolder.insertAfter($target);
-			
-			$("html").live('mousedown', function(e) {
-				e.stopPropagation();          
-				$("select").selectbox('close'); 
+
+			$("html").on('mousedown', function(e) {
+				e.stopPropagation();
+				$("select").selectbox('close');
 			});
-			$([".", inst.settings.classHolder, ", .", inst.settings.classSelector].join("")).mousedown(function(e) {    
+			$([".", inst.settings.classHolder, ", .", inst.settings.classSelector].join("")).mousedown(function(e) {
 				e.stopPropagation();
 			});
 		},
 		/**
 		 * Remove the selectbox functionality completely. This will return the element back to its pre-init state.
-		 * 
+		 *
 		 * @param {HTMLElement} target
 		 */
 		_detachSelectbox: function (target) {
@@ -320,11 +320,11 @@
 			}
 			$("#sbHolder_" + inst.uid).remove();
 			$.data(target, PROP_NAME, null);
-			$(target).show();			
+			$(target).show();
 		},
 		/**
 		 * Change selected attribute of the selectbox.
-		 * 
+		 *
 		 * @param {HTMLElement} target
 		 * @param {String} value
 		 * @param {String} text
@@ -346,7 +346,7 @@
 		},
 		/**
 		 * Enable the selectbox.
-		 * 
+		 *
 		 * @param {HTMLElement} target
 		 */
 		_enableSelectbox: function (target) {
@@ -360,7 +360,7 @@
 		},
 		/**
 		 * Disable the selectbox.
-		 * 
+		 *
 		 * @param {HTMLElement} target
 		 */
 		_disableSelectbox: function (target) {
@@ -374,7 +374,7 @@
 		},
 		/**
 		 * Get or set any selectbox option. If no value is specified, will act as a getter.
-		 * 
+		 *
 		 * @param {HTMLElement} target
 		 * @param {String} name
 		 * @param {Object} value
@@ -390,7 +390,7 @@
 		},
 		/**
 		 * Call up attached selectbox
-		 * 
+		 *
 		 * @param {HTMLElement} target
 		 */
 		_openSelectbox: function (target) {
@@ -421,7 +421,7 @@
 		},
 		/**
 		 * Close opened selectbox
-		 * 
+		 *
 		 * @param {HTMLElement} target
 		 */
 		_closeSelectbox: function (target) {
@@ -442,24 +442,24 @@
 		},
 		/**
 		 * Create a new instance object
-		 * 
+		 *
 		 * @param {HTMLElement} target
 		 * @return {Object}
 		 */
 		_newInst: function(target) {
 			var id = target[0].id.replace(/([^A-Za-z0-9_-])/g, '\\\\$1');
 			return {
-				id: id, 
-				input: target, 
+				id: id,
+				input: target,
 				uid: Math.floor(Math.random() * 99999999),
 				isOpen: FALSE,
 				isDisabled: FALSE,
 				settings: {}
-			}; 
+			};
 		},
 		/**
 		 * Retrieve the instance data for the target control.
-		 * 
+		 *
 		 * @param {HTMLElement} target
 		 * @return {Object} - the associated instance data
 		 * @throws error if a jQuery problem getting data
@@ -474,7 +474,7 @@
 		},
 		/**
 		 * Get a setting value, defaulting if necessary
-		 * 
+		 *
 		 * @param {Object} inst
 		 * @param {String} name
 		 * @return {Mixed}
@@ -486,28 +486,28 @@
 
 	/**
 	 * Invoke the selectbox functionality.
-	 * 
+	 *
 	 * @param {Object|String} options
 	 * @return {Object}
 	 */
 	$.fn.selectbox = function (options) {
-		
+
 		var otherArgs = Array.prototype.slice.call(arguments, 1);
 		if (typeof options == 'string' && options == 'isDisabled') {
 			return $.selectbox['_' + options + 'Selectbox'].apply($.selectbox, [this[0]].concat(otherArgs));
 		}
-		
+
 		if (options == 'option' && arguments.length == 2 && typeof arguments[1] == 'string') {
 			return $.selectbox['_' + options + 'Selectbox'].apply($.selectbox, [this[0]].concat(otherArgs));
 		}
-		
+
 		return this.each(function() {
 			typeof options == 'string' ?
 				$.selectbox['_' + options + 'Selectbox'].apply($.selectbox, [this].concat(otherArgs)) :
 				$.selectbox._attachSelectbox(this, options);
 		});
 	};
-	
+
 	$.selectbox = new Selectbox(); // singleton instance
 	$.selectbox.version = "0.2";
 })(jQuery);
