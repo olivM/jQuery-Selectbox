@@ -337,6 +337,7 @@
 				$("#sbSelector_" + inst.uid).text(text);
 			}
 			value = value.replace(/\'/g, "\\'");
+			$(target).find("option[selected]").attr("selected", FALSE);
 			$(target).find("option[value='" + value + "']").attr("selected", TRUE);
 			if (inst && onChange) {
 				onChange.apply((inst.input ? inst.input[0] : null), [value, inst]);
