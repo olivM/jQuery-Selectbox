@@ -1,14 +1,13 @@
 {
-  "name": "jquery.selectBox",
-  "title": "jquery SelectBox",
-  "description": "A styleable replacement for SELECT elements.",
-  "version": "v1.2.0",
+  "name": "jQuery.SelectBox",
+  "title": "jQuery SelectBox",
+  "description": "original by Dimitar Ivanov",
+  "version": "v0.2.1",
   "keywords": ["select", "jQuery select", "selectBox", "jQuery"],
-  "homepage": "https://github.com/marcj/jquery-selectBox",
+  "homepage": "https://github.com/olivM/jQuery-Selectbox",
   "author": {
-    "name": "Marc J. Schmidt",
-    "email": "marc@kryn.org",
-    "url": "http://marcjschmidt.de"
+    "name": "original by Dimitar Ivanov",
+    "url": "http://www.bulgaria-web-developers.com/projects/javascript/selectbox/"
   },
   "licenses": [
     {
@@ -18,9 +17,9 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/marcj/jquery-selectBox.git"
+    "url": "git://github.com/olivM/jQuery-Selectbox.git"
   },
   "bugs": {
-    "url": "https://github.com/marcj/jquery-selectBox/issues"
+    "url": "https://github.com/olivM/jQuery-Selectbox/issues"
   }
 }
