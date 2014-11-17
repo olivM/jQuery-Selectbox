@@ -1,0 +1,15 @@
+{
+    "name": "olivm/jquery-selectbox",
+    "description": "Custom select box replacement inspired by jQuery UI source. Require jQuery 1.4.x or higher",
+    "keywords": ["select", "jQuery select", "selectBox", "jQuery"],
+    "homepage": "http://www.bulgaria-web-developers.com/projects/javascript/selectbox/",
+    "license": ["MIT", "GPL-2.0"],
+    "authors": [
+        {
+            "name": "Dimitar Ivanov"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/olivM/jQuery-Selectbox/issues"
+    }
+}
